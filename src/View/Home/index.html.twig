@@ -1,0 +1,33 @@
+{% extends 'layoutHomePage.html.twig' %} {% block content %}
+<div class="pt-3 text-center" style="margin-top:-80px;min-height:97vh;background: linear-gradient(0deg, rgba(14,52,113,1) 0%, rgba(4,26,83,1) 100%);">
+    <div class="text-center">
+        <h1 style="color: #9AFFFF;">Bienvenue sur </h1>
+        <img class="mt-3" src="/assets/images/figyua.gif" alt="Figyua Logo" width=40%/>
+    </div>
+    <div class="row p-5">
+        <div class="col">
+            <h4 style="color: #9AFFFF;">Première fois ?</h4>
+            <a href="/Security/register" class="btn btn-outline-info rounded-pill" style="background-color:#041A53">
+                <h5>S'enregistrer</h5>
+            </a>
+        </div>
+        <div class="col">
+            <h4 style="color: #9AFFFF;">Déjà inscrit ?</h4>
+            <a href="/Security/login" class="btn btn-outline-info rounded-pill" style="background-color:#041A53">
+                <h5>Se connecter</h5>
+            </a>
+        </div>
+    </div>
+    <div class="p-3">
+        <h4 style="color: #9AFFFF;">Vous pouvez juste visiter le site en cliquant ci-dessous:</h4>
+        <h4 style="color: #9AFFFF;"><i class="fas fa-arrow-down"></i></h4>
+        <a href="/Home/accueil" class="btn btn-outline-info rounded-pill" style="background-color:#041A53">
+            <h2>Boutique</h2>
+        </a>
+    </div>
+</div>
+
+<audio autoplay>
+    <source src="/assets/audio/figyua.mp3">
+    <p>Si vous pouvez lire ce message, c'est que votre navigateur ne prend pas en charge le fichier audio... Mettez à jour votre navigateur</p>
+</audio> {% endblock %}

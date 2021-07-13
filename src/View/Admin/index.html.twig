@@ -1,0 +1,113 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Tableau de bord admin {% endblock %} {% block content %}
+<div class="container-fluid pt-3 text-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Admin/index">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/figurines">Produits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/users">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/orders">Commandes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/editCarousel">Carrousel</a>
+        </li>
+    </ul>
+</div>
+
+<div class="container mt-3">
+    <div class="container text-center mt-5 mb-5">
+        <h3>Vous avez vendu <b>{{totalSold}}</b> figurines pour <b>{{totalRevenue}}€</b>.</h3>
+    </div>
+    <div class="d-flex justify-content-evenly flex-wrap">
+        <div class="mb-3">
+            <h2>La plus achetée:</h2>
+            <div class="card" style="width: 18rem;">
+                <div class="row g-0">
+                    <div>
+                        <a href="/admin/show/{{bestSell.id}}"><img src="{{ '/' ~ bestSell.image_main }}" class="card-img-top"></a>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h5 class="card-title"><b>{{ bestSell.name }}</b></h5>
+                            </li>
+                            <li class="list-group-item">Licence : <b>{{ bestSell.license_name}}</b></li>
+                            <li class="list-group-item">Fabricant : <b>{{ bestSell.maker_name}}</b></li>
+                            <li class="list-group-item">Nombre d'achats: <b>{{ bestSell.soldQuantity }}</b></li>
+                            <li class="list-group-item">Total gagné: <b>{{ bestSell.totalPrice}}</b>€</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <h2>La meilleure vente:</h2>
+            <div class="card" style="width: 18rem;">
+                <div class="row g-0">
+                    <div>
+                        <a href="/admin/show/{{bestPrice.id}}"><img src="{{ '/' ~ bestPrice.image_main }}" class="card-img-top"></a>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h5 class="card-title"><b>{{ bestPrice.name }}</b></h5>
+                            </li>
+                            <li class="list-group-item">Licence : <b>{{ bestPrice.license_name}}</b></li>
+                            <li class="list-group-item">Fabricant : <b>{{ bestPrice.maker_name}}</b></li>
+                            <li class="list-group-item">Nombre d'achats: <b>{{ bestPrice.soldQuantity }}</b></li>
+                            <li class="list-group-item">Total gagné: <b>{{ bestPrice.totalPrice}}€</b></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container text-center">
+        <h3>Vous avez actuellement <b>{{totalUsers}}</b> clients dans votre base de données dont <b>{{totalAdmins}}</b> admin(s).</h3>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center mt-3 mb-5">
+        <h3>Votre meilleur client:</h3>
+        <div class="card" style="width: 18rem;">
+            <div class="row g-0">
+                <div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <h5 class="card-title"><b>{{ bestUser.name }}</b></h5>
+                        </li>
+                        <li class="list-group-item">Email: <b>{{ bestUser.email }}</b></li>
+                        <li class="list-group-item">Membre depuis: <b>{{ bestUser.date }}</b></li>
+                        <li class="list-group-item">
+                            Nombre d'achats: <b>{{ bestUser.orders|length }}</b>
+                            <button type="button" class="btn btn-primary ms-4" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-info-circle"></i></button>
+                        </li>
+                        <li class="list-group-item">Total dépensé: <b>{{ bestUser.total }}</b>€</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Commandes de {{ bestUser.name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-wrap justify-content-evenly">
+                {% for order in bestUser.orders %}
+                <a href="/admin/orderDetails/{{order}}" class="btn btn-secondary">
+                Commande #{{loop.index}}
+                </a> {% endfor %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

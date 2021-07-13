@@ -1,0 +1,27 @@
+{% extends "layout.html.twig" %} {% block title %} {{ parent() }} - Connexion {% endblock %} {% block content %}
+<div class="container mt-5 p-5 col-sm-5">
+    <h3>Connexion</h3>
+    <form class="form-control" method="POST">
+        <div>
+            {% if error %}
+            <span style="color:red"> {{ error.fields }}</span> {% endif %}
+            <div class="mb-3">
+                <label for="emailLogin" class="form-label">Adresse email</label> {% if error %}
+                <span style="color:red"> {{ error.email }}</span> {% endif %}
+                <input type="text" class="form-control" id="email" name="emailLogin">
+            </div>
+            <div class="mb-3">
+                <label for="passwordLogin" class="form-label">Mot de passe</label> {% if error %}
+                <span style="color:red"> {{ error.password }}</span> {% endif %}
+                <input type="password" class="form-control" id="password" name="passwordLogin">
+            </div>
+        </div>
+        <div class="text-end">
+            <input type="submit" value="Connexion" class="btn btn-outline-info rounded-pill" style="background-color:#041A53" ">
+        </div>
+    </form>
+</div>
+
+{% endblock %} {% block javascript %}
+<script src="/assets/scripts/loginModal.js "></script>
+{% endblock %}

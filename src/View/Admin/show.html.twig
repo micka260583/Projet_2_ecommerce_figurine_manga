@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Afficher figurine {% endblock %} {% block content %}
+<div class="container-fluid pt-3 text-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="../index">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../figurines">Produits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../users">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../orders">Commandes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../editCarousel">Carrousel</a>
+        </li>
+    </ul>
+</div>
+<div class="container d-flex justify-content-center">
+    <div class="card mt-5" style="width: 28rem;">
+        <div class="row g-0">
+            <div class="mb-3">
+                <img src="{{ '/' ~ figurine.image_main }}" class="card-img-top">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h5 class="card-title">Nom: <b>{{ figurine.name }}</b></h5>
+                    </li>
+                    <li class="list-group-item"><b>{{ figurine.short_description}}</b></li>
+                    <li class="list-group-item">Licence : <b>{{ figurine.license_name}}</b></li>
+                    <li class="list-group-item">Fabricant : <b>{{ figurine.maker_name}}</b></li>
+                    <li class="list-group-item">Prix : <b>{{ figurine.price}}€</b></li>
+                    <li class="list-group-item">Reduction : {{ figurine.price_reduction}}</li>
+                    <li class="list-group-item">Quantité : <b>{{ figurine.quantity}}</b></li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-evenly mt-3">
+                            <a href="../edit/{{ figurine.id }}" class="btn btn-warning mx-2">Editer</a>
+                            <a href="../delete/{{ figurine.id }}" class="btn btn-danger">Supprimer</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

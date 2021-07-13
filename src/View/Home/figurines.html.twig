@@ -1,0 +1,124 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Figurines {% endblock %} {% block content %}
+<section class="home-full-slider-wrapper mb-10">
+    <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="5000">
+                <img src="/{{ carousel.0.image }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="/{{ carousel.1.image }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="/{{ carousel.2.image }}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-bs-interval="5000">
+                <img src="/{{ carousel.3.image }}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Précédent</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Suivant</span>
+        </button>
+    </div>
+</section>
+
+<!-- Page Content -->
+<div class="container mt-4">
+    <div class="row">
+        <!-- filtres -->
+        <div class="accordion accordion-flush col-lg-2" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Filtres
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body d-flex flex-wrap justify-content-between">
+                        <div>
+                            <h2>Licences</h2>
+                            {% for license in licenses %}
+                            <div class="form-check">
+                                <input data-lis class="form-check-input" type="checkbox" value="{{ license.name }}" name="license" data-id="{{license.id}}" />
+                                <label class="form-check-label" for="maker">{{ license.name }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <h2>Fabricants</h2>
+                            {% for maker in makers %}
+                            <div class="form-check">
+                                <input data-mak class="form-check-input" type="checkbox" value="{{ maker.name }}" name="maker" data-id="{{maker.id}}" />
+                                <label class="form-check-label" for="maker">{{ maker.name }}</label>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cards -->
+        <div class="col-lg-9">
+            <div id="figurines" class="row">
+                {% for figyua in figyuas %}
+                <div id="{{'figyua' ~ figyua.id}}" data-license-id="{{figyua.license_id}}" data-maker-id="{{figyua.maker_id}}" class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                        <a href="/Home/show/{{ figyua.id }}" class="p-0 mt-0">
+                            <img class="card-img-top" src="{{'/' ~ figyua.image_main }}" style="max-height: 280px" />
+                        </a>
+                        <div class="card-body d-flex flex-column justify-content-between ">
+                            <h4 class="card-title mb-auto">
+                                <a href="/Home/show/{{ figyua.id }}">{{ figyua.name }}</a>
+                            </h4>
+                            <div>
+                                <h5>{{figyua.license_name}}</h5>
+                                <h5>{{figyua.maker_name}}</h5>
+                            </div>
+                            <h5 class="d-flex flex-row-reverse">{{ figyua.price }} €</h5>
+                        </div>
+                        <div class="card-footer text-center p-1" style="background-color: #041a53">
+
+                            <form id="{{'form' ~ figyua.id}}" action="/cart/addToCart">
+                                <input type="submit" {# onclick="play()" #} class="btn btn-outline-info" data-id="{{figyua.id}}" value="Ajouter au panier">
+                                <audio id="audio-success" src="/assets/audio/ajout_panier.mp3" type="audio/mp3">
+                                </audio>
+                                <audio id="audio-fail" src="/assets/audio/rupture.mp3" type="audio/mp3">
+                                </audio>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+</div>
+
+<div id="addToCartAlert" style="position:fixed; top:10%; right: 7%; max-width: 320px;" class="toast border border-light bg-light" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="text-center">
+        <h3 id="totalFig" class="rounded-circle bg-warning text-center" style="width:3rem; position: relative;top:2.7rem; left:3rem;"></h3>
+        <h3 class="text-center">
+            <strong>Panier</strong>
+        </h3>
+        <button data-close="true" class="btn btn-secondary" style="width:auto; position: relative;top:-3rem; left:8rem;">X</button>
+    </div>
+    <div class="toast-body">
+        <h5 class="p-2" id="contentH5"></h5>
+    </div>
+</div>
+{% endblock %} {% block javascript %}
+<script src="/assets/scripts/addToCart.js "></script>
+{% endblock %}

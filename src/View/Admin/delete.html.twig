@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %} {% block title %} {{parent()}} - Suppression d'une figurine {% endblock %} {% block content %}
+<div class="container-fluid pt-3 text-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="../index">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../figurines">Produits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="../users">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="../orders">Commandes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="../editCarousel">Carrousel</a>
+        </li>
+    </ul>
+</div>
+<div class="alert alert-danger text-center" role="alert">
+    <b>Voulez-vous vraiment supprimer la figurine ?</b>
+    <div class="d-flex justify-content-evenly">
+        <div class="m-3">
+            <a href="../figurines" class="btn btn-warning">Annuler</a>
+        </div>
+        <form method="POST">
+            <div class="m-3">
+                <input type="submit" value="Supprimer" class="btn btn-danger">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="container d-flex justify-content-center">
+    <div class="card" style="width: 28rem;">
+        <div class="row g-0">
+            <div class="mb-3">
+                <img src="{{ '/' ~ figurine.image_main }}" class="card-img-top">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <h5 class="card-title">Nom: <b>{{ figurine.name }}</b></h5>
+                    </li>
+                    <li class="list-group-item">Licence : <b>{{ figurine.license_name}}</b></li>
+                    <li class="list-group-item">Fabricant : <b>{{ figurine.maker_name}}</b></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

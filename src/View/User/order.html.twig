@@ -1,0 +1,43 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Editer figurine {% endblock %} {% block content %}
+<section id="orderDetails">
+  <div class="container p-3 text-center">
+    <h3>Commande</h3>
+    <table class="table table-hover table-bordered mt-3">
+      <thead>
+        <tr class="table-light">
+          <th scope="col">#</th>
+          <th scope="col">Nom de la figurine</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Prix</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in details %}
+        <tr>
+          <th scopte="row">{{loop.index}}</th>
+          <td>{{item.figurine_name|slice(0, 15)~'...'}}</td>
+          <td>{{item.figurine_quantity}}</td>
+          <td>{{item.figurine_price * item.figurine_quantity}} €</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+      <tr class="text-center bg-light">
+          <td colspan="2"><strong>Date de création</strong></td>
+          <td colspan="2">{{order.order_date}}</td>
+        </tr>
+        <tr  class="text-center bg-light">
+          <td colspan="2"><strong>Statut</strong></td>
+          <td colspan="2">{{order.status}}</td>
+        </tr>
+        <tr  class="text-center bg-light">
+          <td colspan="2" class="text-center border border-2"><strong>Prix total</strong></td>
+          <td colspan="2">{{order.total_price}} €</td>
+        </tr>
+      </tfoot>
+    </table>
+    <a href="/user/index" class="btn btn-outline-info rounded-pill" style="background-color:#041A53">Retour</a>
+  </div>
+</section>
+
+{% endblock %}

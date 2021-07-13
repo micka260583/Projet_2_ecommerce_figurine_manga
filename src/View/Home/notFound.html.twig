@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<div class="container mt-5 d-flex flex-column align-items-center">
+    <h2 class="mb-5 text-center">Cette page a eu le même destin que Yamcha ...</h2>
+    <img src="/assets/images/yamcha404.png" alt="Yamcha" style="max-width: 60vw">
+    <h3 class="mb-5 mt-5">Redirection sur la page d'accueil.</h3>
+    <div class="spinner-border mb-4" style="width: 5rem; height: 5rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<audio autoplay>
+    <source src="/assets/audio/page404.mp3">
+    <p>Si vous pouvez lire ce message, c'est que votre navigateur ne prend pas en charge le fichier audio... Mettez à jour votre navigateur</p>
+</audio>
+
+{% endblock %}
+{% block javascript %}
+<script>
+    jQuery(function() {
+        setTimeout(() => {
+            window.location.replace("/home/accueil");
+        }, 5000)
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,173 @@
+.btn-outline-info {
+    color: #9AFFFF !important;
+    background-color: #041A53 !important;
+    border-color: #9AFFFF !important;
+}
+
+.btn-outline-danger {
+    color: #ffffff !important;
+    background-color: #dc3545 !important;
+    border-color: #ffffff !important;
+}
+
+.btn-outline-success {
+    color: #ffffff !important;
+    background-color: #188754 !important;
+    border-color: #ffffff !important;
+}
+
+.btn-outline-info:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open>.dropdown-toggle.btn-primary {
+    color: #041A53 !important;
+    background-color: #9AFFFF !important;
+    border-color: #041A53 !important;
+}
+
+.btn-outline-danger:hover {
+    color: #ffffff !important;
+    background-color: #bb2d3b !important;
+    border-color: #ffffff !important;
+}
+
+.btn-outline-success:hover {
+    color: #ffffff !important;
+    background-color: #147347 !important;
+    border-color: #ffffff !important;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 15px;
+    right: 25px;
+    display: none;
+    z-index: 6;
+}
+
+@media only screen and (min-device-width: 768px) {
+    .back-to-top {
+        position: fixed;
+        bottom: 15px;
+        right: 25px;
+        display: none;
+        z-index: 6;
+        height: 55px;
+        width: 55px;
+    }
+    .fa-chevron-up {
+        margin-top: 12px;
+    }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+body {
+    background-color: #eeeeee;
+    font-family: 'Open Sans', serif;
+    font-size: 14px
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.40rem
+}
+
+.img-sm {
+    width: 80px;
+    height: 80px
+}
+
+.itemside .info {
+    padding-left: 15px;
+    padding-right: 7px
+}
+
+.table-shopping-cart .price-wrap {
+    line-height: 1.2
+}
+
+.table-shopping-cart .price {
+    font-weight: bold;
+    margin-right: 5px;
+    display: block
+}
+
+.text-muted {
+    color: #969696 !important
+}
+
+a {
+    text-decoration: none !important
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0px
+}
+
+.itemside {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%
+}
+
+.dlist-align {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex
+}
+
+[class*="dlist-"] {
+    margin-bottom: 5px
+}
+
+.coupon {
+    border-radius: 1px
+}
+
+.price {
+    font-weight: 600;
+    color: #212529
+}
+
+.btn.btn-out {
+    outline: 1px solid #fff;
+    outline-offset: -5px
+}
+
+.btn-main {
+    border-radius: 2px;
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 10px 19px;
+    cursor: pointer;
+    color: #fff;
+    width: 100%
+}
+
+.btn-apply {
+    font-size: 11px
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex-grow: 1;
+}

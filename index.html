@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+  <title>Figyua - Bulma</title>
+  <link rel="icon" href="/public/assets/images/favicon.png">
+  <link rel="stylesheet" media="screen" href="https://cpwebassets.codepen.io/assets/fullpage/fullpage-4de243a40619a967c0bf13b95e1ac6f8de89d943b7fc8710de33f681fe287604.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&display=swap" rel="stylesheet" />
+
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+  <style>
+    html { font-size: 15px; }
+    html, body { margin: 0; padding: 0; min-height: 100%; }
+    body { height:100%; display: flex; flex-direction: column; }
+    .referer-warning {
+      background: black;
+      box-shadow: 0 2px 5px rgba(0,0,0, 0.5);
+      padding: 0.75em;
+      color: white;
+      text-align: center;
+      font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;
+      line-height: 1.2;
+      font-size: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    .referer-warning h1 { font-size: 1.2rem; margin: 0; }
+    .referer-warning a { color: #56bcf9; } /* $linkColorOnBlack */
+  </style>
+</head>
+
+<body class="">
+  <div id="result-iframe-wrap" role="main">
+
+    <iframe
+      id="result"
+      srcdoc="
+<!DOCTYPE html>
+<html lang=&quot;en&quot; >
+
+<head>
+
+  <title>Bulma | Virtual-assistant</title>
+  
+<style>
+html,body 
+{
+    padding:0;
+    margin:0;
+    max-width:100%;
+    user-select:none;
+    -ms-user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+   background: url('/public/assets/images/capsulCorp.png') no-repeat center fixed;
+}
+
+html,body::before {
+  background-color: #4ec2ae;
+}
+
+#h{
+  Color:#fff;
+  Border-radius:5px;
+  Color
+  }
+
+.shadow
+{
+    
+ -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+   
+   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2); 
+   
+   }
+
+.nice-font
+{
+    font-family:'Josefin Sans',sans-serif;
+}
+
+header
+{
+      text-align:center;
+}
+
+main
+{
+    padding:10px;
+    margin-bottom:50px;
+}
+
+footer #command
+{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    padding:7px 7px;
+    padding-right:7px;
+    margin-bottom:5px;
+    border-radius:30px;
+    border:0.5px solid #9e9e9e50;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box ;
+    background-color:#fff;
+    
+}
+
+#command input
+{
+    display:block;
+    width:73%;
+    float:left;
+    
+}
+
+#command input,#command button
+{
+    
+    padding:10px 15px;
+    border:0;
+    outline:0;
+}
+
+button
+{
+    background-color:#1e88e5;
+    color:#fff;
+    border-radius:20px;
+    font-weight:300;
+    float:right;
+    
+ }
+ 
+ .row
+ {
+     width:100%;
+     margin-bottom:10px;
+     display:block;
+ }
+ .row::after{
+      content: &quot;&quot;;
+    display: table;
+    clear: both;
+ }
+ 
+.chat
+{
+    border:0;
+    word-wrap:break-word;
+    background-color:#fff;
+    border-radius:30px;
+    color:#111;
+    padding:10px 20px;
+    display:inline-block  
+}
+
+.question
+{
+    float:right;
+    background-color:#1e88e5;
+    color:#fff;
+}
+
+.answer
+{
+    float:left;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+  
+  <script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage(&quot;resize&quot;, &quot;*&quot;);
+  }
+</script>
+
+</head>
+
+<body translate=&quot;no&quot; >
+  <!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+       <script src='https://code.responsivevoice.org/responsivevoice.js'></script> 
+        <meta charset=&quot;UTF-8&quot; />
+        <link href=&quot;https://fonts.googleapis.com/css?family=Josefin+Sans&quot; rel=&quot;stylesheet&quot;>
+        
+    </head>
+    <body>
+        <header>
+            <h1 class=&quot;nice-font&quot; id=&quot;h&quot; style=&quot;text-shadow: 3px 0 0 #000, -3px 0 0 #000, 0 3px 0 #000, 0 -3px 0 #000, 2px 2px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000&quot;>Bulma</h1>
+        </header>
+        
+        <main class=&quot;nice-font&quot;>
+           
+        </main>
+        
+        <div id=&quot;last&quot;></div>
+        
+        <footer>
+            <div id=&quot;command&quot;>
+                <input placeholder=&quot;Entrez votre commande et appuyez sur Entrée &quot; type=&quot;text&quot; />
+                <button class=&quot;shadow nice-font&quot; style=&quot;display:none&quot;>Envoyer</button>
+            </div>
+        </footer>
+    
+    </body>
+</html>
+    <script src=&quot;https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js&quot;></script>
+
+      <script id=&quot;rendered-js&quot; >
+const ThingsICanDo = [
+&quot;01/ Comment créer un compte ?&quot;,
+&quot;02/ A quoi sert le compte client ?&quot;,
+&quot;03/ Limite de livraison ?&quot;,
+&quot;04/ Je ne peux pas me connecter ?&quot;,
+&quot;05/ Montant de commande minimum ?&quot;,
+&quot;06/ Le paiement en ligne ?&quot;,
+&quot;07/ Comment puis-je payer ?&quot;,
+&quot;08/ Réception de ma commande ?&quot;,
+&quot;09/ Annuler ma commande ?&quot;,
+&quot;10/ Contacter figyua ?&quot;,
+&quot;11/ Modifier mon nom ou mon adresse ?&quot;,
+&quot;12/ Quel est le meilleur language informatique&quot;,
+&quot;blague&quot;,
+&quot;guide&quot;,
+];
+
+const ListThings = ThingsICanDo => &quot;Vous pouvez essayer de demander ce qui suit, tapez le chiffre correspondant à votre question : <br><br><br>&quot; + ThingsICanDo.join(&quot;<br/><br/>&quot;);
+
+const Random = list => list[Math.floor(Math.random() * list.length)];
+
+const WhatCanIDo = ThingsICanDo => Random(ThingsICanDo);
+
+const Links = {
+
+};
+
+const getLink = siteName => `Click here to open <a href=&quot;${Links[siteName]}&quot; target=&quot;_blank&quot;>${siteName}</a>`;
+
+const Jokes = [
+&quot;Tu sais pourquoi l'iPhone 6 se plie ? Parce que l'Apple Store.&quot;,
+&quot;Quand quelqu'un de triste joue aux jeux vidéoS pour oublier, on peut dire qu'il se console.&quot;,
+];
+
+const TellAJoke = Jokes => Random(Jokes);
+
+const Facts = [
+&quot;Ce n’est un secret pour personne que le manga et l’anime sont très populaires au Japon, avec plus de deux milliards d’exemplaires vendus chaque année. D’ailleurs, les Japonais utilisent plus de papier pour produire des mangas et autres bandes dessinées que pour le papier hygiénique !&quot;,
+&quot;Le premier manga considéré comme tel date de 1902. Il s'agit d'une histoire dessinée par Kitazawa dans les pages illustrées du supplément du dimanche du Jiji Shinpō. Kitazawa s'inspire beaucoup de la culture européenne, son premier manga reprend le thème de l'arroseur arrosé.&quot;,
+];
+
+const TellAFacts = Facts => Random(Facts);
+
+const Story = [
+
+&quot;Les figurines manga, plus qu’un art de vivre. Les figurines manga ne sont pas réservées à une catégorie de personne ou d’âge. On les collectionne pour diverses raisons. Ce petit jouet permet aux grands fans d’anime de plonger facilement dans l’univers des animations du pays du soleil-levant et de pouvoir admirer ses personnages préférés jusque dans les moindres détails. Pour les collectionneurs de haut niveau, les figurines leur servent de source d’inspiration pour créer une nouvelle. Tandis que certains autres en achètent en grande quantité afin de les disposer dans une vitrine ou encore dans leur boîte d’origine en tant que véritables joyaux de décoration. Des personnes âgées sont également concernées par la collection de figurines manga. Pour eux, accumuler ces petits personnages est un moyen de cultiver le souvenir. Pour ceux qui sont nés dans les années 80 par exemple, les personnages de dragon Ball Z ont un trait avec une période heureuse de leur enfance et ces derniers leur permettent de retourner à ce moment précis à chaque fois qu’ils regardent les objets sur leur étagère.&quot;,
+
+&quot;Les figurines, un véritable objet de passion. L’engouement pour le manga qu’il soit issu des plus célèbres sagas ou non n’est pas encore prêt à retomber. S’ils sont nés de la culture du divertissement japonais (japanime ou japanimation), les mangas ont survolé les frontières pour séduire d’abord les enfants asiatiques, puis ceux de tous les quatre coins du globe et sont devenus désormais un véritable art universel. Selon mangatori, la France vient en second rang des pays les plus consommateurs de ce type d’animation après le Japon. En dehors du format papier disponible dans les librairies, et visuel pour les besoins de la TV, le manga se représente également sous un aspect palpable et matérialisé : la figurine. Les figurines manga évoquent l’image fidèle des personnages de manga et d’animés qui sont, depuis longtemps, un loisir très convoité par leurs amateurs aux quatre coins du monde. Ils en font principalement la collection. La principale raison d’acheter ce type de mini sculpture est tout simplement la passion. Il ne s’agit pas d’une question d’âge ni d’avoir la plus grande collection possible. En effet, il est impossible pour un adepte de manga de ne pas avoir au moins une figurine de ses héros favoris. Cela lui rend fier même s’il doit dépenser autant d’argent.&quot;,
+
+&quot;Figurines authentiques, où s’en procurer ? Ces petits personnages venant du monde imaginaire ont de beaux jours devant eux dans les boutiques spécialisées. Ils envahissent désormais internet avec de multiples modèles et prix pour répondre à tous les styles et les goûts. Tout le monde peut donc trouver l’univers manga de son rêve qu’il soit jeune adulte, adolescent ou enfant. Acheter en ligne présente toutefois certains risques qui méritent ainsi une certaine attention. En effet, sur internet pullule des objets contrefais et de mauvaise qualité. Il est conseillé en premier lieu d’être attentif sur l’authenticité de la fabrication. Tout dépend de la provenance de la figurine, car leur qualité varie d’un pays à un autre. Les produits de fabrication japonaise ou coréenne du Nord sont notamment connus pour leurs hautes qualités. Il faut également privilégier les boutiques réputées comme Figyua pour être sûr d’acheter des produits authentiques. Ce magasin en ligne fait l’objet de nombreux avis positifs et de satisfaction de la part des clients. Il vend des figurines fiables et authentiques provenant de distributeurs Japonais, et issus des marques de grande notoriété. Il propose en plus une facilité de commande, une sécurité de paiement et une rapidité de livraison tout en mettant à la disposition des collectionneurs des fiches de produits leur permettant d’examiner chaque détail de la figurine manga qu’ils désirent ajouter dans leur collection.&quot;];
+
+const TellAStory = Story => Random(Story);
+
+const illegals = [
+&quot;window&quot;,
+...Object.keys(window),
+...Object.keys(document),
+...Object.keys(Element.prototype)];
+
+const isLegal = string => {
+  let Legal = true;
+  illegals.forEach(illegal => {
+    if (string.indexOf(illegal) !== -1)
+    {
+      Legal = false;
+    }
+  });
+  return Legal;
+};
+
+const HtmlSpecialChars = string => {
+  let escapedString = string;
+  HtmlSpecialChars.specialchars.forEach(
+  chr => {
+    escapedString = escapedString.replace(
+    new RegExp(chr[0], 'g'),
+    chr[1]);
+  });
+  return escapedString;
+};
+
+HtmlSpecialChars.specialchars = [
+['&amp;', '&amp;amp;'],
+['<', '&amp;lt;'],
+['>', '&amp;gt;'],
+['&quot;', '&amp;quot;']];
+
+const monthNames = [
+&quot;Janvier&quot;,
+&quot;Fevrier&quot;,
+&quot;Mars&quot;,
+&quot;Avril&quot;,
+&quot;Mai&quot;,
+&quot;Juin&quot;,
+&quot;Juillet&quot;,
+&quot;Aout&quot;,
+&quot;Septembre&quot;,
+&quot;Octobre&quot;,
+&quot;Novembre&quot;,
+&quot;Decembre&quot;];
+
+const today = (monthNames) =>
+{
+  let date = new Date();
+
+  return `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+};
+
+const now = () =>
+{
+  let date = new Date();
+
+  return date.toLocaleTimeString();
+};
+
+const Evaluate = (expression) =>
+{
+  try
+  {
+    if (isLegal(expression))
+    {
+      const result = eval(HtmlSpecialChars(expression));
+      return result;
+    } else
+    {
+      return &quot;error&quot;;
+    }
+  }
+
+  catch (err)
+  {
+    return &quot;error&quot;;
+  }
+};
+
+const Answers = {
+    &quot;01&quot;: &quot;Vous remplissez le formulaire s'enregistrer, dans la barre de navigation. &amp;#10024;&quot;,
+    &quot;02&quot;: &quot;Un compte client permet de retourner votre panier, vos commandes et vos factures&quot;,
+    &quot;03&quot;: &quot;La livraison de nos colis s'effectue en France métropolitaine, y compris la Corse et Monaco, ainsi que les DOM-TOM. La conclusion du contrat s'effectue en français et vous recevrez tous les documents en français.&quot;,
+    &quot;04&quot;:&quot;Avez-vous saisi l’adresse e-mail et le mot de passe corrects? Si vous avez oublié votre mot de passe, demandez en un nouveau. Ou écrivez un e-mail à notre équipe via la page contact.&quot;,
+    &quot;05&quot;:&quot;Il n’y a pas de minimum de commande chez nous, il est donc tout à fait possible de commander un seul article. Pour toute commande de 100 € ou plus, vous profitez de la livraison gratuite.&quot;,
+    &quot;06&quot;:&quot;Nous attachons une grande importance à la sécurité lors des transactions. Vos données sont transmises uniquement sous forme cryptée, de sorte que des tiers ne puissent pas les lire. Votre paiement par carte de crédit est traité par un partenaire certifié en matière de sécurité.&quot;,
+    &quot;07&quot;:&quot;Paiement préalable: Nous réservons les articles souhaités jusqu’à sept jours à compter du passage de la commande. Vous pouvez ainsi virer ou déposer en toute facilité le montant à payer sur notre compte. Vous trouverez nos coordonnées bancaires dans la confirmation de commande que vous recevez par e-mail directement après l’envoi de votre commande. Lors du virement, veillez à ce que les données saisies soient complètes et correctes afin que nous puissions identifier correctement votre virement et que vous receviez rapidement votre commande. Dès que le montant de la facture est intégralement crédité sur notre compte, nous pouvons traiter, emballer et expédier votre commande. Nous vous en informons de nouveau par e-mail (confirmation de l’expédition). Vous recevez votre colis en règle générale sous 2 à 3 jours ouvrables. Carte de crédit: Le mode de paiement le plus simple. Nous acceptons les cartes de crédit Visa et Mastercard. La boutique n’enregistre pas les données de votre carte de crédit. PayPal: Vous avez un compte PayPal ? Dans ce cas, n'hésitez pas à utiliser ce mode de paiement. Sinon, ouvrez un compte PayPal sur www.paypal.fr. Ce compte vous permettra également à l'avenir de faire des achats rapidement et en toute sécurité dans de nombreuses boutiques en ligne internationales. Carte Bleue: Régler votre commande par Carte Bleue est très facile et confortable. Pour payer avec la Carte Bleue, sélectionnez Carte Bleue comme mode de paiement lors de l’exécution de votre commande. Via l'environnement sécurisé de Carte Bleue vous pouvez effectuer et confirmer le paiement. C'est tout, le paiement est déjà terminé.&quot;,
+    &quot;08&quot;:&quot;La livraison a généralement lieu sous 3-4 jours ouvrables à compter de notre confirmation de commande. Si vous n’avez pas reçu votre livraison sous six jours ouvrables ou si vous n’avez pas reçu de confirmation d’expédition, veuillez écrire un e-mail à l’équipe via la page contact. N’oubliez pas d’indiquer votre numéro de client et/ou le numéro de commande.&quot;,
+    &quot;09&quot;:&quot;Vous pouvez annuler votre commande en faisant usage de votre droit de révocation légal. Il suffit de nous envoyer un e-mail ou, si la marchandise a déjà été expédiée, de nous la retourner directement en refusant de la réceptionner.&quot;,
+    &quot;10&quot;:&quot;Cliquez simplement sur Contact dans la boutique en ligne. Vous pouvez poser vos questions à notre équipe du service clientèle via le formulaire de contact.&quot;,
+    &quot;11&quot;:&quot;Une fois que vous êtes connecté à la boutique en ligne sur le site, cliquez simplement sur Compte et modifiez votre nom et votre adresse.&quot;,
+    &quot;12&quot;: &quot;Le PHP avec Jenny&quot;,
+
+
+  &quot;commandes&quot;: ListThings(ThingsICanDo),
+  &quot;guide&quot;: ListThings(ThingsICanDo),
+  &quot;blague&quot;: TellAJoke(Jokes),
+  &quot;histoire&quot;: TellAStory(Story),
+  &quot;fait&quot;: TellAFacts(Facts),
+  &quot;bonjour&quot;: &quot;Bonjour %U% , que veuX-tu savoir ? &quot;,
+  &quot;hey bro&quot;: &quot;Hey  %U% . que puis-je faire ? &quot;,
+  &quot;hola&quot;: &quot;Hola amigo 😁&quot;,
+  &quot;figyua&quot;:&quot;C'est le meilleur site de figurine manga du monde, créé par mes maîtres, 5 génies de l'informatique encore jamais égalés&quot;,
+  &quot;wild&quot;:&quot;La Wild Code School a été fondée en 2014 par Anna Stépanoff (formée à Harvard University et Normale Sup) et Romain Coeur (formé à l'ENAC), qui souhaitaient créer une école alternative basée sur le blended learning ou apprentissage hybride. Partant du constat que la formation 100% en ligne des MOOC n'est pas concluant1, ils ont monté une formation qui allie apprentissage théorique sur une plateforme pédagogique en ligne et formation en présentiel sur des projets pour de vrais clients. En 2019, Anna Stépanoff a été décorée chevalier dans l'Ordre national du Mérite2, par la secrétaire d’État auprès du ministre de l’Économie et des Finances, Agnès Pannier-Runacher. La Wild Code School est une école innovante et un réseau européen de campus qui forment aux métiers tech des spécialistes adaptables. C'est une marque de la société Innov'Educ. Après s'être historiquement développée sur le métier de développeur web (PHP, Javascript, Java/Android), l'école propose aujourd'hui des formations autour de six grands domaines: le développement informatique, la data, la cybersécurité, le product management, l'UX/UI Design et le business développement 2.0. Elle forme essentiellement des adultes en reconversion professionnelle sur des formats courts de trois à cinq mois. Les formations proposées reposent sur une pédagogie dite hybride (ou blended learning) alliant e-learning sur une plateforme développée en propre baptisée Odyssey [archive], et formation en présentiel basée sur la réalisation de projets et une pratique de la classe inversée. Initialement basée à La Loupe, une petite commune d'Eure-et-Loir dans le Perche, l'école est aujourd'hui présente dans 13 villes en France (Bordeaux, Lille, La Loupe, Lyon, Orléans, Paris, Strasbourg, Toulouse, Nantes, Reims, Marseille, Biarritz, Tours) et 6 villes en Europe (Bruxelles, Berlin, Bucarest, Lisbonne, Londres, Madrid). 7 nouveaux campus ouvrent fin 2019, à Amsterdam, Barcelone, Budapest, Dublin, Milan, Prague et Varsovie.&quot;,
+  
+  &quot;date&quot;: &quot;Nous sommes le &quot; + today(monthNames) + &quot; today. Faites de cette journée une belle journée %U% 😀&quot;,
+  &quot;heure&quot;: &quot;il est &quot; + now() + &quot; heure dans ta région.&quot;,
+  
+  &quot;bonne nuit&quot;: &quot;Bonne nuit %U% 🌃 fais de beaux rêves &quot;,
+  
+  };
+
+const Notfound = &quot;Désolé, je n'ai pas de réponses pour cette entrée.<br/><br/>Essayer autre chose :)&quot;;
+
+const Invalid = &quot;Indeed !&quot;;
+
+const D = window.document;
+
+const element = selector => D.querySelector(selector);
+
+const Answer = (Main, User, Text) =>
+{
+  let Flag = false;
+
+  const Result = Evaluate(Text);
+
+  text = Text.toLowerCase();
+
+  Object.keys(Answers).forEach(key => {
+
+    if (!Flag)
+    {
+      if (text.indexOf(key) !== -1)
+      {
+        addAnswer(
+        Main,
+        Answers[key].replace(
+        &quot;%U%&quot;,
+        User));
+        Flag = true;
+      } else
+      if (typeof Result == &quot;&quot;)
+      {
+        addAnswer(
+        Main,
+        `${Text} equals ${Result}`);
+        Flag = true;
+      }
+    }
+  });
+  if (!Flag)
+  {
+    addAnswer(Main, Notfound);
+  }
+};
+
+const addQuestion = (Main, text) =>
+{
+  Main.innerHTML += `
+        <div class=&quot;row&quot;>
+            <div class=&quot;chat question shadow&quot;>${text}</div>
+        </div>
+    `;
+};
+
+const addAnswer = (Main, text) =>
+{
+  Main.innerHTML += `
+    <div class=&quot;row&quot;>
+        <div class=&quot;chat answer shadow&quot;>${text}</div>
+    </div>
+    `;
+};
+
+D.addEventListener(&quot;DOMContentLoaded&quot;, () => {
+
+  const Main = element(&quot;main&quot;);
+
+  const Askbtn = element(&quot;button&quot;);
+
+  const Question = element(&quot;input&quot;);
+
+  const Lastdiv = element(&quot;#last&quot;);
+
+  let User = prompt(&quot;Entrez votre nom :&quot;);
+
+  while (User === null || User === '')
+  {if (window.CP.shouldStopExecution(0)) break;
+
+    User = prompt(&quot;Votre nom est requis pour m'utiliser : &quot;);
+
+  }window.CP.exitedLoop(0);
+
+  Question.focus();
+
+  const Ask = () => {
+
+    const Text = Question.value;
+
+    if (Text.length)
+    {
+      addQuestion(Main, Text);
+
+      Question.value = &quot;&quot;;
+
+      Answer(Main, User, Text);
+
+      Lastdiv.scrollIntoView();
+    }
+  };
+
+  Askbtn.addEventListener(&quot;click&quot;, Ask);
+
+  Question.addEventListener(&quot;keyup&quot;, function (event) {
+    if (event.keyCode === 13) Ask();
+  });
+
+  addAnswer(Main, `Bonjour ${User}, je suis Bulma, résponsable du FAQ. Tapez guide pour voir tout ce que tu peux faire grâce à moi ;) `);
+});
+//# sourceURL=pen.js
+    </script>
+
+</body>
+
+</html>
+ 
+"
+      sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups allow-presentation  allow-scripts allow-top-navigation-by-user-activation" allow="accelerometer; camera; encrypted-media; geolocation; gyroscope; microphone; midi" allowTransparency="true"
+      allowpaymentrequest="true" allowfullscreen="true" class="result-iframe">
+      </iframe>
+
+  </div>
+</body>
+</html>

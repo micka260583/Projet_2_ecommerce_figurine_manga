@@ -1,0 +1,83 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Editer figurine {% endblock %} {% block content %}
+<div class="container-fluid pt-3 text-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="../index">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="../figurines">Produits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../users">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../orders">Commandes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../editCarousel">Carrousel</a>
+        </li>
+    </ul>
+</div>
+<div class="m-3">
+    <form class="form" method="POST" enctype="multipart/form-data">
+        <h3>Editer produit</h3>
+        <div class="m-3">
+            <label for="" class="form-label">Nom</label>
+            <input type="text" name="name" class="form-control" value="{{ figurine.name }}">
+        </div>
+        <div class="m-3">
+            <label for="license" class="form-label">Licence</label>
+            <select class="form-select" name="license">
+                <option selected value="{{ figurine.license_id }}">{{ figurine.license_name }}</option>
+                {% for license in licenses %}
+                    {% if figurine.license_id != license.id %}
+                        <option value="{{ license.id }}">{{ license.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="m-3">
+            <label for="maker" class="form-label">Fabricant</label>
+            <select class="form-select" name="maker">
+                <option selected value="{{ figurine.maker_id }}">{{ figurine.maker_name }}</option>
+                {% for maker in makers %}
+                    {% if figurine.maker_id != maker.id %}
+                        <option value="{{ maker.id }}">{{ maker.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="m-3">
+            <label for="price" class="form-label">Prix</label>
+            <input type="number" name="price" class="form-control" min="0" step=0.01 placeholder="1" value="{{ figurine.price }}">
+        </div>
+        <div class=" m-3 ">
+            <label for="priceReduction " class="form-label ">Prix promotionnel</label>
+            <input type="number " name="priceReduction" class="form-control " min="0 " max="1 " step=0.01 value="1" value="{{ figurine.price_reduction }}">
+        </div>
+        <div class="m-3">
+            <label for="quantity" class="form-label">Quantité</label>
+            <input type="number" name="quantity" class="form-control" min="1" value="{{ figurine.quantity }}">
+        </div>
+        <div class="m-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="form-control">{{ figurine.short_description }}</textarea>
+        </div>
+        <div class="m-3">
+            <label for="matiere" class="form-label">Matière</label>
+            <input type="text" name="matiere" class="form-control" value="{{ figurine.matiere }}">
+        </div>
+        <div class="m-3">
+            <label for="taille" class="form-label">Taille</label>
+            <input type="text" name="taille" class="form-control" value="{{ figurine.taille }}">
+        </div>
+        <div class="m-3">
+            <label for="image" class="form-label">Image</label><br>
+            <input type="file" class="form-control" name="image" id="imageUpload" aria-describedby="imageUpload" aria-label="Upload">
+        </div>
+        <div class="m-3">
+            <input type="submit" value="Validate edit" class="btn btn-success">
+        </div>
+    </form>
+</div>
+{% endblock %}

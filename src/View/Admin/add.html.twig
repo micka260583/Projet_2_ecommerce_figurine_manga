@@ -1,0 +1,78 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Ajout d'un produit {% endblock %} {% block content %} {% if errors %} {{errors.global}} {{errors.post.image}} {{errors.post.name}}{% endif %}
+<div class="container-fluid pt-3 text-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/index">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Admin/figurines">Produits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/users">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/orders">Commandes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="editCarousel">Carrousel</a>
+        </li>
+</div>
+<div class="m-3">
+    <form class="form" enctype="multipart/form-data" method="POST">
+        <h3>Ajout d'un produit</h3>
+        <div class="m-3">
+            <label for="" class="form-label">Nom</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div class="m-3">
+            <label for="license" class="form-label">Licence</label>
+            <select class="form-select" name="license">
+                <option selected>---</option>
+                {% for license in licenses %}
+                <option value="{{license.id }}">{{ license.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="m-3">
+            <label for="maker" class="form-label">Fabricant</label>
+            <select class="form-select" name="maker">
+                <option selected>---</option>
+                {% for maker in makers %}
+                <option value="{{ maker.id }}">{{ maker.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="m-3">
+            <label for="price" class="form-label">Prix</label>
+            <input type="number" name="price" class="form-control" min="0" step=0.01 placeholder="1">
+        </div>
+        <div class="m-3">
+            <label for="priceReduction" class="form-label">Prix promotionnel</label>
+            <input type="number" name="priceReduction" class="form-control" min="0" max="1" step=0.01 value="1">
+        </div>
+        <div class="m-3">
+            <label for="quantity" class="form-label">Quantité</label>
+            <input type="number" name="quantity" class="form-control" min="1" value="1">
+        </div>
+        <div class="m-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="form-control"></textarea>
+        </div>
+        <div class="m-3">
+            <label for="matiere" class="form-label">Matière</label>
+            <input type="text" name="matiere" class="form-control">
+        </div>
+        <div class="m-3">
+            <label for="taille" class="form-label">Taille</label>
+            <input type="text" name="taille" class="form-control">
+        </div>
+        <div class="m-3">
+            <label for="image" class="form-label">Image</label><br>
+            <input type="file" class="form-control" name="image" id="imageUpload" aria-describedby="imageUpload" aria-label="Upload">
+        </div>
+        <div class="m-3">
+            <input type="submit" value="Ajouter la figurine" class="btn btn-outline-info rounded-pill" style="background-color:#041A53" ">
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'layout.html.twig' %} {% block content %}
+<div class="container-fluid mt-5">
+    <div class="row justify-content-evenly">
+        <img src="{{'/' ~ figurine.image_main }}" height="300px" class="col-md-3" alt="...">
+        <div class="col-md-7 mt-5">
+            <h5 class="card-title">{{ figurine.name }}</h5>
+            <p class="card-text">{{ figurine.price }} €</p>
+            <p class="card-text">{{ figurine.short_description }}</p>
+            <div class="mt-5">
+                <form id="figurineForm" action="/cart/addToCart" method="POST">
+                    <input type="submit" {# onclick="play()" #} data-id="{{figurine.id}}" class="btn btn-outline-info rounded-pill" style="background-color:#041A53" value="Ajouter au panier" />
+                    <audio id="audio-success" src="/assets/audio/ajout_panier.mp3" type="audio/mp3">
+                    </audio>
+                    <audio id="audio-fail" src="/assets/audio/rupture.mp3" type="audio/mp3">
+                    </audio>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="accordion mt-5" id="accordionExample">
+    <div class="accordion-item ">
+        <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Détail du produit 
+        </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <ul>
+                    <li>Matière: {{figurine.matiere}}</li>
+                    <li>Taille: {{figurine.taille}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <h1 class="text-center">Autres produits de la même catégorie</h1>
+    <div id="listFigurines" class="row">
+        {% for figyua in figyuas %} {% if figyua != figurine %}
+        <div id="{{'card' ~ figyua.id}}" class="col-md-4 mb-4">
+            <div class="card h-100">
+                <a href="/Home/show/{{ figyua.id }}"><img class="card-img-top" src="{{'/' ~ figyua.image_main }}" alt="" /></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="/Home/show/{{ figyua.id }}">{{ figyua.name }}</a>
+                    </h4>
+                    <p class="card-text">
+                        {{ figyua.short_description }}
+                    </p>
+                    <h5 class="d-flex flex-row-reverse">{{ figyua.price }} €</h5>
+                </div>
+                <div class="card-footer text-center" style="background-color: #041a53">
+                    <form id="{{'form' ~ figyua.id}}" action="/cart/addToCart">
+                        <input type="submit" {# onclick="play()" #} data-id="{{figyua.id}}" class="btn btn-outline-info" value="Ajouter au panier" />
+                        <audio id="audio-success" src="/assets/audio/ajout_panier.mp3" type="audio/mp3">
+                        </audio>
+                        <audio id="audio-fail" src="/assets/audio/rupture.mp3" type="audio/mp3">
+                        </audio>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endif %} {% endfor %}
+    </div>
+
+</div>
+<div id="addToCartAlert" style="position:fixed; top:10%; right: 7%; max-width: 320px;" class="toast border border-light bg-light" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="text-center">
+        <h3 id="totalFig" class="rounded-circle bg-warning text-center" style="width:3rem; position: relative;top:2.7rem; left:3rem;"></h3>
+        <h3 class="text-center mt-2">
+            <strong>Panier</strong>
+        </h3>
+        <button data-close="true" class="btn btn-secondary" style="width:auto; position: relative;top:-4rem; left:8rem;">X</button>
+    </div>
+    <div class="toast-body">
+        <h5 class="p-2" id="contentH5"></h5>
+    </div>
+</div>
+{% endblock %} {% block javascript %}
+<script src="/assets/scripts/showAddToCart.js"></script>
+{% endblock %}

@@ -1,0 +1,381 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Tableau de bord admin {% endblock %} {% block content %}
+<div class="container-fluid pt-3 text-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/Admin/index">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/Admin/figurines">Produits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/users">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/orders">Commandes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="editCarousel">Carrousel</a>
+        </li>
+    </ul>
+</div>
+
+<section id="figurine" class="container-fluid">
+    <div class="accordion accordion-flush" id="accordionFigurines">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingFigurines">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFigurines" aria-expanded="false" aria-controls="flush-collapseFigurines">Figurines</button>
+            </h2>
+            <div id="flush-collapseFigurines" class="accordion-collapse collapse" aria-labelledby="flush-headingFigurines" data-bs-parent="#accordionFigurines">
+                <div class="accordion-body" style="padding: 0;">
+                    <div class="d-flex justify-content-center">
+                        <a href="add" class="btn btn-success d-flex align-items-center m-2" style="color:white">
+                            <p class="pt-3 me-3">Ajouter une figurine</p>
+                            <i class="fas fa-plus-circle"></i>
+                        </a>
+                    </div>
+                    <table class="table table-hover table-bordered text-center">
+                        <caption>Liste des figurines</caption>
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>#</p>
+                                        <div id="figurinesIdASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="figurinesIdDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th scope="col" class="d-none d-md-table-cell">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Image</p>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Nom</p>
+                                        <div id="figurinesNameASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="figurinesNameDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Prix</p>
+                                        <div id="figurinesPriceASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="figurinesPriceDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th scope="col" class="d-none d-md-table-cell">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Quantité</p>
+                                    </div>
+                                </th>
+                                <th scope="col" class="d-none d-md-table-cell">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Licence</p>
+                                        <div id="figurinesLicenseASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="figurinesLicenseDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th class="d-none d-md-table-cell" scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Fabricant</p>
+                                        <div id="figurinesMakerASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="figurinesMakerDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Actions</p>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="figurines">
+                            {% for figurine in figurines %} {% if figurine.quantity
+                            <=5 %} <tr id="{{'tr' ~ figurine.id }}" class="bg-danger">
+                                {% elseif figurine.quantity
+                                <= 10 %} <tr id="{{'tr' ~ figurine.id }}" class="bg-warning">
+                                    {% else %}
+                                    <tr id="{{'tr' ~ figurine.id }}">
+                                        {% endif %}
+                                        <th id="{{'id' ~ figurine.id}}" scope="row">{{figurine.id}}</th>
+                                        <td class="d-none d-md-table-cell">
+                                            <img src='{{'/' ~ figurine.image_main}}' style="max-width:80px; max-height:100px">
+                                        </td>
+                                        <td id="{{'name-sm' ~ figurine.id}}" class="d-sm-table-cell d-md-none">{{figurine.name|split(' ')[0] }}</td>
+                                        <td id="{{'name-lg' ~ figurine.id}}" class="d-none d-md-table-cell">{{figurine.name}}</td>
+                                        <td id="{{'price' ~ figurine.id}}">{{figurine.price}}€</td>
+                                        <td class="d-none d-md-table-cell">{{figurine.quantity}}</td>
+                                        <td id="{{'license' ~ figurine.id}}" class="d-none d-md-table-cell">{{figurine.license_name}}</td>
+                                        <td id="{{'maker' ~ figurine.id}}" class="d-none d-md-table-cell">{{figurine.maker_name}}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-evenly">
+                                                <a href="show/{{ figurine.id }}" class="btn btn-primary me-3"><i class="fas fa-eye"></i></a>
+                                                <a href="edit/{{ figurine.id }}" class="btn btn-warning me-3" style="color:white"><i class="fas fa-pen"></i></a>
+                                                <a href="delete/{{ figurine.id }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr>
+<section id="licenseMaker" class="container-fluid mb-5 mt-5">
+    <div class="accordion accordion-flush d-flex flex-wrap justify-content-around" id="accordionLisMak">
+        <div class="accordion-item">
+            <h1 class="accordion-header" id="flush-headingLis">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseLis" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Licences
+                </button>
+            </h1>
+            <div id="flush-collapseLis" class="accordion-collapse collapse" aria-labelledby="flush-headingLis" data-bs-parent="#accordionLisMak">
+                <div class="accordion-body" style="padding: 0">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-success d-flex align-items-center m-2" style="color:white" data-bs-toggle="modal" data-bs-target="#licenseAdd">
+                            <p class="pt-3 me-3">Ajouter une licence</p>
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+                    </div>
+                    <table class="table table-hover table-bordered">
+                        {% if session.errorLicenseName is not empty %}
+                        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                            <strong>Erreur:</strong> {{ session.errorLicenseName }}
+                        </div>
+                        {% endif %}
+                        <caption>Liste des licences</caption>
+                        <colgroup>
+                            <col span="1" style="width:10%">
+                            <col span="1" style="width:40%">
+                            <col span="1" style="width:40%">
+                        </colgroup>
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>#</p>
+                                        <div id="licensesIdASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="licensesIdDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Nom</p>
+                                        <div id="licensesNameASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="licensesNameDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="licenses">
+                            {% for license in licenses %}
+                            <tr id="{{'trLis' ~ license.id}}">
+                                <th id="{{'lisId' ~ license.id}}" scope="row">{{license.id}}</th>
+                                <td id="{{'lisName' ~ license.id}}">{{license.name}}</td>
+                                <td>
+                                    <div class="d-flex justify-content-evenly">
+                                        <button type="button" class="btn btn-warning" style="color:white" data-bs-toggle="modal" data-bs-target="#license{{license.id}}Edit"><i class="fas fa-pen"></i></button>
+                                        <button type="button" class="btn btn-danger" style="color:white" data-bs-toggle="modal" data-bs-target="#license{{license.id}}Delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <div class="modal fade" id="license{{license.id}}Edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="licenseEdit" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="licenseEdit">Editer les licences</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></butto>
+                                        </div>
+                                        <form method="POST">
+                                            <div class="modal-body">
+                                                <strong><input type="text" class="form-control" name="licenseEdit" value="{{ license.name }}"></strong><br>
+                                                <p class="text-center"><i class="fas fa-info-circle"></i> La modification de cette licence modifiera automatiquement toutes les figurines associées.</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-evenly">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <input type="hidden" name="licenseEditId" value="{{ license.id }}">
+                                            <input type="submit" class="btn btn-primary" value="Confirm edit">
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="license{{license.id}}Delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="licenseDelete" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="licenseDelete">Voulez-vous vraiment supprimer cette licence ?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <strong><p>{{ license.name }}</p></strong>
+                                            <p class="text-center"><i class="fas fa-exclamation-triangle"></i> La suppression de cette licence entraînera la suppression de toutes les figurines associées.</p>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-evenly">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <form method="POST">
+                                                <input type="hidden" name="licenseDeleteId" value="{{ license.id }}">
+                                                <input type="submit" class="btn btn-primary" value="Confirm delete">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingMak">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseMak" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Fabricants
+                </button>
+            </h2>
+            <div id="flush-collapseMak" class="accordion-collapse collapse" aria-labelledby="flush-headingMak" data-bs-parent="#accordionLisMak">
+                <div class="accordion-body" style="padding: 0">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-success d-flex align-items-center m-2" style="color:white" data-bs-toggle="modal" data-bs-target="#makerAdd">
+                            <p class="pt-3 me-2">Ajouter un fabricant</p>
+                            <i class="fas fa-plus-circle"></i>
+                        </button>
+                    </div>
+                    <table class="table table-hover table-bordered">
+                        {% if session.errorMakerName is not empty %}
+                        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                            <strong>Error:</strong> {{ session.errorMakerName }}
+                        </div>
+                        {% endif %}
+                        <caption>Liste des fabricants</caption>
+                        <colgroup>
+                            <col span="1" style="width:10%">
+                            <col span="1" style="width:40%">
+                            <col span="1" style="width:40%">
+                        </colgroup>
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>#</p>
+                                        <div id="makersIdASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="makersIdDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="d-flex justify-content-between">
+                                        <p>Nom</p>
+                                        <div id="makersNameASC"><i class="fas fa-arrow-down" style="color:black"></i></div>
+                                        <div id="makersNameDESC"><i class="fas fa-arrow-up" style="color:black"></i></div>
+                                    </div>
+                                </th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="makers">
+                            {% for maker in makers %}
+                            <tr id="{{'trMak' ~ maker.id}}">
+                                <th id="{{'makId' ~ maker.id}}" scope="row">{{maker.id}}</th>
+                                <td id="{{'makName' ~ maker.id}}">{{maker.name}}</td>
+                                <td>
+                                    <div class="d-flex justify-content-evenly">
+                                        <button type="button" class="btn btn-warning" style="color:white" data-bs-toggle="modal" data-bs-target="#maker{{maker.id}}Edit"><i class="fas fa-pen"></i></button>
+                                        <button type="button" class="btn btn-danger" style="color:white" data-bs-toggle="modal" data-bs-target="#maker{{maker.id}}Delete"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <div class="modal fade" id="maker{{maker.id}}Edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="makerEdit" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="makerEdit">Editer les fabricants</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form method="POST">
+                                            <div class="modal-body">
+                                                <strong><input id="previousName" type="text" class="form-control" name="makerEdit" value="{{ maker.name }}"></strong><br>
+                                                <p class="text-center"><i class="fas fa-info-circle"></i> L'édition de ce fabricant modifiera automatiquement toutes les figurines associées.</p>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-evenly">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                <input type="hidden" name="makerEditId" value="{{ maker.id }}">
+                                                <input type="submit" class="btn btn-primary" value="Confirm edit">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="maker{{maker.id}}Delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="makerDelete" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="makerDelete">Voulez-vous vraiment supprimer ce fabricant ?</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p id="previousName" type="text" name="makerDelete"><strong>{{ maker.name }}</strong></p>
+                                            <p class="text-center"><i class="fas fa-exclamation-triangle"></i> La suppression de ce fabricant entraînera la suppression de toutes les figurines associées.</p>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-evenly">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                            <form method="POST">
+                                                <input type="hidden" name="makerDeleteId" value="{{ maker.id }}">
+                                                <input type="submit" class="btn btn-primary" value="Confirm delete">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="licenseAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="licenseAdd" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="licenseEdit">Ajouter une licence</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST">
+                        <div class="modal-body">
+                            <input type="text" class="form-control" name="licenseAdd">
+                        </div>
+                        <div class="modal-footer d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <input type="submit" class="btn btn-primary" value="Ajouter license">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="makerAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="makerAdd" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="makerEdit">Ajouter fabricant</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="POST">
+                        <div class="modal-body">
+                            <input type="text" class="form-control" name="makerAdd">
+                        </div>
+                        <div class="modal-footer d-flex justify-content-evenly">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                            <input type="submit" class="btn btn-primary" value="Ajouter fabricant">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>
+{% endblock %} {% block javascript %}
+<script src="/assets/scripts/figurines.js"></script>
+{% endblock %}

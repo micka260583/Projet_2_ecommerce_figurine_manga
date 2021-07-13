@@ -1,0 +1,98 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Compte {% endblock %} {% block content %}
+
+<div class="container pt-5 mb-5">
+    <div class="container pt-2">
+        <div class="text-center">
+            <h3>Bienvenu <strong>{{session.user.name}}</strong> sur votre page de compte</h3>
+        </div>
+        <hr>
+        <div class="container pt-2">
+            <div class="text-center">
+                <h3>Informations personnelles:</h3>
+            </div>
+            <div class="row pt-2 bg-info rounded-3 text-center">
+                <div class="col">
+                    <h5>Nom:</h5>
+                    <h5><strong>{{ session.user.name }}</strong></h5>
+                </div>
+                <div class="col">
+                    <h5>Email: </h5>
+                    <h5><strong>{{session.user.email}}</strong></h5>
+                </div>
+            </div>
+        </div>
+        <div class="text-center pt-3">
+            <h3>Adresse de facturation:</h3>
+        </div>
+        {% if not session.user.adress.country %}
+        <p>Votre adresse de facturation n'est pas encore définie. Vous pouvez l'ajouter à vos informations personnelles en éditant votre profil
+            <a href="/User/edit">ici</a>.
+        </p>
+        {% endif %} {% if session.user.adress %}
+        <div class="rounded-3 bg-info">
+            <div class="row text-center">
+                <div class="col">
+                    <h5>Pays:</h5>
+                    <h5><strong>{{ session.user.adress.country }}</strong></h5>
+                </div>
+                <div class="col">
+                    <h5>Ville:</h5>
+                    <h5><strong>{{ session.user.adress.city }}</strong></h5>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col">
+                    <h5>Code postal:</h5>
+                    <h5><strong>{{ session.user.adress.zip }}</strong></h5>
+                </div>
+                <div class="col">
+                    <h5>Rue:</h5>
+                    <h5><strong>{{ session.user.adress.street }}</strong></h5>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="pt-3 text-center">
+            <h5>Vous pouvez modifier votre profil <a href="/User/edit"> ici</a></h5>
+        </div>
+        <hr>
+        <div class="text-center pt-3">
+            <h3>Commandes:</h3>
+        </div>
+        {% if orders %}
+        <div class="row mt-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">COMMANDE</th>
+                        <th scope="col">DATE</th>
+                        <th scope="col">TOTAL</th>
+                        <th scope="col">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{'#' ~ loop.index}}</td>
+                        <td>{{order.createdAt|date('y-m-d')}}</td>
+                        <td>{{order.total_price}} €</td>
+                        <td><a href="/user/order/{{ order.id }}">Détails</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center">
+            <h5>Il semble que vous n'ayez pas encore passé de commande. Vous pouvez acheter maintenant en cliquant sur le bouton ci-dessous.</h5>
+            <h5>
+                <strong>{{ session.user.adress.street }}</strong>
+            </h5>
+            <div>
+                <a href="/Home/figurines" class="btn btn-outline-info rounded-pill" style="background-color:#041A53">Boutique</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

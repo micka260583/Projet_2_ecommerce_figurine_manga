@@ -1,0 +1,56 @@
+{% extends 'layout.html.twig' %} {% block title %} {{parent()}} - Contact {% endblock %} {% block content %}
+<h4 id="success" class='visually-hidden'>{% if errors.success is not empty %}{{ errors.success }}{% endif %}</h4>
+
+<h4 id="error" class='visually-hidden'>{% if errors.error is not empty %}{{ errors.error }}{% endif %}</h4>
+<section id="contact" class="container p-5">
+    <div class="mx-auto" style="width: 300px;">
+        <h1>Contactez-nous</h1>
+    </div>
+    <div class="d-flex justify-content-around">
+        <div class="align-self-center mx-5 d-none d-md-block">
+            <img src="/assets/images/figyua final.png" width="200" height="200" alt="..." />
+        </div>
+        <form method="POST" class="my-2">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control rounded-pill" id="email" name="email"> {% if errors.email is defined and not empty %}
+                <p style='color:red'>{{errors.email}}</p>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="firstname" class="form-label">Prénom</label>
+                <input type="text" class="form-control rounded-pill" id="firstname" name="firstname"> {% if errors.firstname is defined and not empty %}
+                <p style='color:red'>{{errors.firstname}}</p>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Nom</label>
+                <input type="text" class="form-control rounded-pill" id="lastname" name="lastname"> {% if errors.lastname is defined and not empty %}
+                <p style='color:red'>{{errors.lastname}}</p>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="subject" class="form-label">Sujet</label>
+                <input type="text" class="form-control rounded-pill" id="subject" name="subject"> {% if errors.subject is defined and not empty %}
+                <p style='color:red'>{{errors.subject}}</p>
+                {% endif %}
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control rounded-3" id="message" name="message" style="height:100px"></textarea> {% if errors.message is defined and not empty %}
+                <p style='color:red'>{{errors.message}}</p>
+                {% endif %}
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-outline-info rounded-pill" style="background-color:#041A53">Envoyer</button>
+            </div>
+        </form>
+
+
+        <div class="align-self-center mx-5 d-none d-lg-block">
+            <img src="/assets/images/Plume-Mail.png" width="250" height="250" alt="..." />
+        </div>
+    </div>
+</section>
+{% endblock %} {% block javascript %}
+<script src="/assets/scripts/contact.js"></script> {% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %} {% block title %} {{ parent() }} - Modifier le carrousel {% endblock %} {% block content %}
+<div class="container-fluid pt-3 text-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/Admin/index">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/figurines">Produits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/users">Clients</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/Admin/orders">Commandes</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link active" href="editCarousel">Carrousel</a>
+        </li>
+    </ul>
+</div>
+<section class="mb-5 mt-5">
+    <div class="carouselSelect container col-sm-9">
+        <h3>Images du carrousel</h3>
+        <form class="form-control" enctype="multipart/form-data" method="POST">
+            <div class="m-3">
+                <label for="id" class="form-label"></label>
+                <textarea name="id1" class="form-control visually-hidden">{{ carousels.0.id }}</textarea>
+                <label for="image1" class="form-label">Image 1</label><br>
+                <input type="file" class="form-control" name="image1" aria-describedby="imageUpload" aria-label="Upload">
+            </div>
+            <div class="m-3">
+                <label for="id" class="form-label"></label>
+                <textarea name="id2" class="form-control visually-hidden">{{ carousels.1.id }}</textarea>
+                <label for="image2" class="form-label">Image 2</label><br>
+                <input type="file" class="form-control" name="image2" aria-describedby="imageUpload" aria-label="Upload">
+            </div>
+            <div class="m-3">
+                <label for="id" class="form-label "></label>
+                <textarea name="id3" class="form-control visually-hidden">{{ carousels.2.id }}</textarea>
+                <label for="image3" class="form-label">Image 3</label><br>
+                <input type="file" class="form-control" name="image3" aria-describedby="imageUpload" aria-label="Upload">
+            </div>
+            <div class="m-3">
+                <label for="id" class="form-label"></label>
+                <textarea name="id4" class="form-control visually-hidden">{{ carousels.3.id }}</textarea>
+                <label for="image4" class="form-label">Image 4</label><br>
+                <input type="file" class="form-control" name="image4" id="imageUpload" aria-describedby="imageUpload" aria-label="Upload">
+            </div>
+            <p class="text-center">⚠️ Attention, toutes les images du carrousel doivent être de la même taille. ⚠️</p>
+            <p class="text-center">Pour une utilisation optimale, la taille conseillée est de 1920 x 470 pixels </p>
+            <div class="m-3 text-end">
+                <input type="submit" value="Ajouter les images" class="btn btn-outline-info rounded-pill" style="background-color:#041A53">
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

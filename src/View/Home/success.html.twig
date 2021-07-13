@@ -1,0 +1,19 @@
+
+{% extends 'layout.html.twig' %} {% block content %}
+<div class="container mt-5 d-flex flex-column align-items-center">
+    <h2 class="mb-5 text-center">La commande a été prise en compte. Vous pouvez voir cette commande dans les informations de votre compte si vous en possédez un.</h2>
+    <img src="/assets/images/PaymentSuccess.png" alt="Luffy success" style="max-width: 60vw">
+    <h3 class="mb-5 mt-5">Redirection sur la page d'accueil.</h3>
+    <div class="spinner-border mb-4" style="width: 5rem; height: 5rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+{% endblock %} {% block javascript %}
+<script>
+    jQuery(function() {
+        setTimeout(() => {
+            window.location.replace("/home/accueil");
+        }, 5000)
+    })
+</script>
+{% endblock %}
